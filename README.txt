@@ -1,3 +1,8 @@
+This is pySMART-0.3 by Marc Herndon.  It has been adapted to work a little better with python3.4 (it wasn't working with
+Popen.communicate() correctly) and has had the work by Maxim Korobko (https://gitlab.beget.ru/LTD-Beget/pySMART) 
+replicated into it as well.
+
+
 ===========
 pySMART
 ===========
