@@ -148,7 +148,7 @@ class Device(object):
                 return
 
         # Hack for a megaraid interface
-        if 'sat+megaraid' in self.interface:
+        if 'megaraid' in self.interface:
             megaraid = {self.interface: self.interface}
             smartctl_type.update(megaraid)
         # If a valid device was detected, populate its information
