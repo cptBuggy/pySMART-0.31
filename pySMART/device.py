@@ -42,13 +42,15 @@ class Device(object):
         """Instantiates and initializes the `pySMART.device.Device`."""
         assert interface is None or interface.lower() in [
             'ata', 'csmi', 'sas', 'sat', 'sata', 'scsi']
-        self.name = name.replace('/dev/', '')
-        """
-        **(str):** Device's hardware ID, without the '/dev/' prefix.
-        (ie: sda (Linux), pd0 (Windows))
-        """
-        if self.name[:2].lower() == 'pd':
-            self.name = pd_to_sd(self.name[2:])
+        #Make 'self.name' optional
+        if self.name is not None:
+            self.name = name.replace('/dev/', '')
+            """
+            **(str):** Device's hardware ID, without the '/dev/' prefix.
+            (ie: sda (Linux), pd0 (Windows))
+            """
+            if self.name[:2].lower() == 'pd':
+                self.name = pd_to_sd(self.name[2:])
         self.model = None
         """**(str):** Device's model number."""
         self.serial = None
