@@ -43,7 +43,7 @@ class Device(object):
         assert interface is None or interface.lower() in [
             'ata', 'csmi', 'sas', 'sat', 'sata', 'scsi']
         #Make 'self.name' optional
-        if self.name is not None:
+        if name is not None:
             self.name = name.replace('/dev/', '')
             """
             **(str):** Device's hardware ID, without the '/dev/' prefix.
@@ -51,6 +51,8 @@ class Device(object):
             """
             if self.name[:2].lower() == 'pd':
                 self.name = pd_to_sd(self.name[2:])
+        else:
+            self.name = None
         self.model = None
         """**(str):** Device's model number."""
         self.serial = None
